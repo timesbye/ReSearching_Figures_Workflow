@@ -8,14 +8,23 @@
 
 ## 1. 仓库用途
 
-本仓库通过引用前沿工具并构建原创能力，统一提供三类能力：
+本仓库通过引用前沿工具并构建原创能力，统一提供八类能力：
 
-- 学术写作与翻译 Prompt 库（引用 [awesome-ai-research-writing](https://github.com/Leey21/awesome-ai-research-writing)）：
-  `prompt-libraries/awesome-ai-research-writing/`
-- 论文级科研绘图 Skill（参考 [figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式）：
-  `skills/scientific-figure-making/`
+- 文献综述 Skill（参考 [Auto-Scholar](https://github.com/CAICAIIs/Auto-Scholar)（MIT License）文献综述自动化理念）：
+  `skills/literature-review/`
+- 论文阅读 Skill（参考 [DeepPaperNote](https://github.com/917Dhj/DeepPaperNote) 论文深度阅读理念）：
+  `skills/paper-reading/`
 - 高质量 brainstorm / 选题 / 差异化 / novelty 检查 Skill（**本项目原创**）：
   `skills/critical-ideation/`
+- 实验设计 Skill（参考 [autoresearch-skill](https://github.com/wjgoarxiv/autoresearch-skill)（MIT License）实验设计理念）：
+  `skills/experiment-design/`
+- 论文级科研绘图 Skill（参考 [figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式）：
+  `skills/scientific-figure-making/`
+- 引导式论文写作 Skill（参考 [Scholarly](https://github.com/ShiyangZheng/scholarly) 引导式写作理念）：
+  `skills/scholarly-writing/`
+- 学术写作与翻译 Prompt 库（引用 [awesome-ai-research-writing](https://github.com/Leey21/awesome-ai-research-writing)）：
+  `prompt-libraries/awesome-ai-research-writing/`
+- 审稿检查（使用 awesome-ai-research-writing 中的 reviewer_check prompt）
 
 推荐使用方式不是把这些内容复制到每个项目里，而是让具体项目通过 `.ai/toolkit/` 链接到本仓库。
 
@@ -25,12 +34,22 @@
 
 - `ROUTER.md`
   统一路由说明，告诉 Agent 遇到不同任务时应该使用哪个能力入口。
+- `skills/literature-review/`
+  文献综述 skill，用于系统性综述领域、识别研究 gap。
+- `skills/paper-reading/`
+  论文阅读 skill，用于深度阅读单篇论文、生成结构化笔记。
 - `skills/critical-ideation/`
-  第三个核心 skill，用于 brainstorm、主动质疑、搜索已有方案、排序和 MVP 收敛。
+  brainstorm / 选题 skill，用于主动质疑、搜索已有方案、排序和 MVP 收敛。
+- `skills/experiment-design/`
+  实验设计 skill，用于实验方案设计、变量控制、消融实验规划。
+- `skills/scientific-figure-making/`
+  科研绘图 skill，用于论文级 matplotlib 图、PDF/PNG 导出。
+- `skills/scholarly-writing/`
+  引导式论文写作 skill，用于从零构建论文骨架、按章节引导写作。
 - `prompts/`
   常用任务入口模板，例如润色、翻译、实验分析、完整图表流水线。
 - `templates/project_ai/`
-  新科研项目的最小模板，已包含 `ideas/` 输出目录。
+  新科研项目的最小模板，已包含 `ideas/`、`experiments/` 输出目录。
 - `examples/GeoAgent-Thesis/`
   基于模板生成的完整示例项目。
 - `scripts/install_to_codex.ps1`
@@ -132,7 +151,7 @@ Linux / macOS / WSL：
 examples/GeoAgent-Thesis/.ai/toolkit
 ```
 
-如果你要给别人演示“这个仓库如何把 ideation、绘图、写作和 reviewer 检查串成一个顺序 workflow”，最应该先打开：
+如果你要给别人演示“这个仓库如何把文献综述、ideation、实验设计、绘图、写作和 reviewer 检查串成一个顺序 workflow”，最应该先打开：
 
 ```text
 examples/GeoAgent-Thesis/WORKFLOW_SHOWCASE.md
@@ -244,12 +263,36 @@ Requirements:
 
 ## 7. 推荐工作流
 
-### 只做写作
+### 只做文献综述
 
 使用：
 
 ```text
-prompt-libraries/awesome-ai-research-writing/
+skills/literature-review/
+```
+
+### 只做论文阅读
+
+使用：
+
+```text
+skills/paper-reading/
+```
+
+### 只做 ideation / brainstorm / novelty 检查
+
+使用：
+
+```text
+skills/critical-ideation/
+```
+
+### 只做实验设计
+
+使用：
+
+```text
+skills/experiment-design/
 ```
 
 ### 只做绘图
@@ -260,12 +303,20 @@ prompt-libraries/awesome-ai-research-writing/
 skills/scientific-figure-making/
 ```
 
-### 只做 ideation / brainstorm / novelty 检查
+### 只做写作
 
 使用：
 
 ```text
-skills/critical-ideation/
+skills/scholarly-writing/
+```
+
+### 只做润色/翻译
+
+使用：
+
+```text
+prompt-libraries/awesome-ai-research-writing/
 ```
 
 ### 图表 + 写作联合任务
@@ -279,7 +330,7 @@ skills/critical-ideation/
 5. 写实验分析
 6. 做 reviewer 风格检查
 
-### Ideation + 写作联合任务
+### Ideation + 实验设计 + 写作联合任务
 
 按以下顺序：
 
@@ -288,7 +339,8 @@ skills/critical-ideation/
 3. 强质疑
 4. 搜索已有方案
 5. 排序并筛选 Top 3
-6. 把选中的 idea 写成 proposal / PRD / paper intro
+6. 设计实验方案与消融实验
+7. 把选中的 idea 写成 proposal / PRD / paper intro
 
 ## 8. 常见注意事项
 

@@ -46,6 +46,15 @@ The licenses of those projects apply to their respective contents.
   It does not include the original Python scripts or figure outputs from figures4papers.
   Users should visit the upstream repository for full scripts and demos.
 
+### Auto-Scholar
+
+- Repository: https://github.com/CAICAIIs/Auto-Scholar
+- Author: CAICAIIs
+- License: MIT License
+- Usage in this project: The `skills/literature-review/` directory contains original
+  usage guides inspired by Auto-Scholar's concept of AI-powered literature review
+  generation. It does not include Auto-Scholar's original code.
+
 ### DeepPaperNote
 
 - Repository: https://github.com/917Dhj/DeepPaperNote
@@ -55,14 +64,14 @@ The licenses of those projects apply to their respective contents.
   guides inspired by DeepPaperNote's concept of deep-reading papers and generating
   structured research notes. It does not include DeepPaperNote's original content.
 
-### Auto-Scholar
+### autoresearch-skill
 
-- Repository: https://github.com/CAICAIIs/Auto-Scholar
-- Author: CAICAIIs
+- Repository: https://github.com/wjgoarxiv/autoresearch-skill
+- Author: wjgoarxiv
 - License: MIT License
-- Usage in this project: The `skills/literature-review/` directory contains original
-  usage guides inspired by Auto-Scholar's concept of AI-powered literature review
-  generation. It does not include Auto-Scholar's original code.
+- Usage in this project: The `skills/experiment-design/` directory contains original
+  usage guides inspired by autoresearch-skill's concept of automated experiment design
+  and planning. It does not include autoresearch-skill's original code.
 
 ### Scholarly
 

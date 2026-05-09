@@ -6,15 +6,16 @@
 
 这里的关键不是声称我们发明了所有模块，而是：
 
-- **参考** [`DeepPaperNote`](https://github.com/917Dhj/DeepPaperNote) 的论文深度阅读理念，编写论文阅读 Skill
 - **参考** [`Auto-Scholar`](https://github.com/CAICAIIs/Auto-Scholar)（MIT License）的文献综述自动化理念，编写文献综述 Skill
+- **参考** [`DeepPaperNote`](https://github.com/917Dhj/DeepPaperNote) 的论文深度阅读理念，编写论文阅读 Skill
 - **原创构建** [`critical-ideation`](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/tree/main/skills/critical-ideation)——一个 Critic + Search + Ideation 型选题 Skill
+- **参考** [`autoresearch-skill`](https://github.com/wjgoarxiv/autoresearch-skill)（MIT License）的实验设计理念，编写实验设计 Skill
 - **参考** [`figures4papers`](https://github.com/ChenLiu-1996/figures4papers) 的绘图范式，编写科研绘图 Skill
 - **参考** [`Scholarly`](https://github.com/ShiyangZheng/scholarly) 的引导式写作理念，编写论文写作 Skill
 - **引用** [`awesome-ai-research-writing`](https://github.com/Leey21/awesome-ai-research-writing) 作为学术润色 Prompt 库
-- **整合** 路由规则、项目模板、产物目录和顺序调用方式，形成从论文阅读到论文表达的连续工作流
+- **整合** 路由规则、项目模板、产物目录和顺序调用方式，形成从文献综述到审稿检查的连续工作流
 
-换句话说，这个仓库的价值在于 **把分散能力组织成一个能从论文阅读走到论文表达的连续工作流**，其中原创的 brainstorm 能力是连接"选题"与"执行"的关键桥梁。
+换句话说，这个仓库的价值在于 **把分散能力组织成一个能从文献综述走到审稿检查的连续工作流**，其中原创的 brainstorm 能力是连接"选题"与"执行"的关键桥梁。
 
 ***
 
@@ -225,27 +226,30 @@ paper/context.md
 
 按顺序回看：
 
-1. `paper-reading`\
-   先深度阅读关键论文，生成结构化笔记，理解领域现状
-2. `literature-review`\
+1. `literature-review`\
    系统性综述领域，识别研究 gap，为选题提供证据基础
+2. `paper-reading`\
+   先深度阅读关键论文，生成结构化笔记，理解领域现状
 3. `critical-ideation`\
    先筛方向，不让项目在错误的 idea 上浪费时间
-4. `scientific-figure-making`\
+4. `experiment-design`\
+   设计实验方案，规划变量控制与消融实验
+5. `scientific-figure-making`\
    把方向绑定到可见证据，而不是抽象口号
-5. `scholarly-writing`\
+6. `scholarly-writing`\
    从零构建论文骨架，按章节引导写作
-6. `awesome-ai-research-writing`\
+7. `awesome-ai-research-writing`\
    把图表结果整理成论文级表达
-7. `reviewer_check`\
+8. `reviewer_check`\
    防止过度 claim，逼着结论回到证据边界内
 
-这不是七个功能的并排陈列，而是一个顺序依赖的链条：
+这不是八个功能的并排陈列，而是一个顺序依赖的链条：
 
 ```text
-paper reading
--> literature review
+literature review
+-> paper reading
 -> idea shortlist
+-> experiment design
 -> evidence figure
 -> paper skeleton
 -> caption and analysis
@@ -261,12 +265,14 @@ paper reading
 
 - 我们可以把引用来的能力模块整合成统一入口
 - 我们可以让不同模块之间通过项目目录和规则协同工作
-- 我们可以把 brainstorm、图表、写作和 reviewer 检查串成一个连续生产链
+- 我们可以把 brainstorm、实验设计、图表、写作和 reviewer 检查串成一个连续生产链
 - 我们最终交付的不是碎片化 prompt，而是**可复用、可落库、可追溯的项目工作流**
 
 如果你要向别人展示这个仓库，最应该给他看的不是单个 skill，而是这条完整链路：
 
+- 文献综述与阅读产物在 `literature/`
 - ideation 结果在 `ideas/`
+- 实验设计在 `experiments/`
 - 图表脚本与产物在 `figures/`
 - 学术表达与 reviewer 检查在 `paper/notes/`
 - 整体讲解就在这份文档里
@@ -278,12 +284,12 @@ paper reading
 实际演示时，按下面顺序最清楚：
 
 1. 先打开这份文档：[WORKFLOW\_SHOWCASE.md](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/WORKFLOW_SHOWCASE.md)
-2. 再看论文阅读产物：
+2. 再看文献综述与论文阅读产物：
    - [literature/geoagent2025\_framework.md](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/literature/geoagent2025_framework.md)
 3. 再打开 ideation 产物：
    - [ideas/idea\_report.md](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/ideas/idea_report.md)
    - [ideas/decision\_matrix.md](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/ideas/decision_matrix.md)
-3. 再看图和脚本：
+4. 再看图和脚本：
    - [figures/scripts/plot\_geoagent\_workflow\_showcase.py](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/figures/scripts/plot_geoagent_workflow_showcase.py)
    - [figures/outputs/geoagent\_workflow\_showcase.png](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/figures/outputs/geoagent_workflow_showcase.png)
 4. 最后看论文表达与 reviewer 收口：
@@ -291,4 +297,4 @@ paper reading
    - [paper/notes/result\_analysis\_cn.md](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/paper/notes/result_analysis_cn.md)
    - [paper/notes/reviewer\_check.md](https://github.com/timesbye/ALL-in-ALL_ReSearching_Workflow_Skill/blob/main/examples/GeoAgent-Thesis/paper/notes/reviewer_check.md)
 
-这样别人看到的就不是"一个仓库里有很多文件"，而是"这个仓库可以把一个项目从想法一路推到表达，并且中间每一步都有产物可落地"。
+这样别人看到的就不是"一个仓库里有很多文件"，而是"这个仓库可以把一个项目从文献综述一路推到审稿检查，并且中间每一步都有产物可落地"。

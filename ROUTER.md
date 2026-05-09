@@ -4,27 +4,7 @@
 
 > **项目定位**：把散落在各处的好工具串到一起，补上缺失的关键环节，再让它们按正确顺序跑起来。核心是 Skill 整合概念，后续会根据开源项目进展及前沿方向持续更新。
 
-## 1. Paper Reading Skill
-
-> 来源：参考 [917Dhj/DeepPaperNote](https://github.com/917Dhj/DeepPaperNote) 论文深度阅读理念，本项目编写使用指南
-
-Path:
-
-```text
-skills/paper-reading/
-```
-
-Use for:
-
-- deep-reading a single research paper
-- generating structured research notes
-- extracting key contributions and methodology
-- identifying limitations and open questions
-- connecting a paper to the user's own work
-
----
-
-## 2. Literature Review Skill
+## 1. Literature Review Skill
 
 > 来源：参考 [CAICAIIs/Auto-Scholar](https://github.com/CAICAIIs/Auto-Scholar)（MIT License）文献综述自动化理念，本项目编写使用指南
 
@@ -41,6 +21,26 @@ Use for:
 - writing a related work section
 - identifying research gaps
 - finding and organizing relevant papers
+
+---
+
+## 2. Paper Reading Skill
+
+> 来源：参考 [917Dhj/DeepPaperNote](https://github.com/917Dhj/DeepPaperNote) 论文深度阅读理念，本项目编写使用指南
+
+Path:
+
+```text
+skills/paper-reading/
+```
+
+Use for:
+
+- deep-reading a single research paper
+- generating structured research notes
+- extracting key contributions and methodology
+- identifying limitations and open questions
+- connecting a paper to the user's own work
 
 ---
 
@@ -80,7 +80,36 @@ Workflow:
 
 ---
 
-## 4. Scientific Figure Making Skill
+## 4. Experiment Design Skill
+
+> 来源：参考 [wjgoarxiv/autoresearch-skill](https://github.com/wjgoarxiv/autoresearch-skill)（MIT License）实验设计理念，本项目编写使用指南
+
+Path:
+
+```text
+skills/experiment-design/
+```
+
+Use for:
+
+- designing experiment plans and protocols
+- variable control and confound identification
+- ablation study planning
+- baseline and benchmark selection
+- experiment result logging and analysis
+- reproducibility checklist
+
+Rules:
+
+- Save experiment plans to the target project's `experiments/`.
+- Define clear independent/dependent variables before running.
+- Specify baselines and metrics before seeing results.
+- Plan ablation studies alongside main experiments.
+- Document all hyperparameters and random seeds.
+
+---
+
+## 5. Scientific Figure Making Skill
 
 > 来源：参考 [ChenLiu-1996/figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式，本项目编写使用指南
 
@@ -110,7 +139,7 @@ Rules:
 
 ---
 
-## 5. Scholarly Writing Skill
+## 6. Scholarly Writing Skill
 
 > 来源：参考 [ShiyangZheng/scholarly](https://github.com/ShiyangZheng/scholarly) 引导式论文写作理念，本项目编写使用指南
 
@@ -134,7 +163,7 @@ Relationship to `awesome-ai-research-writing`:
 
 ---
 
-## 6. Academic Writing Prompt Library
+## 7. Academic Writing Prompt Library
 
 > 来源：引用 [Leey21/awesome-ai-research-writing](https://github.com/Leey21/awesome-ai-research-writing)
 
@@ -164,55 +193,56 @@ Rules:
 
 ---
 
-## 7. Full Workflow
+## 8. Full Workflow
 
-The complete workflow chain from reading to writing:
+The complete workflow chain from literature review to reviewer check:
 
 ```text
-paper-reading → literature-review → critical-ideation → scientific-figure-making → scholarly-writing + awesome-ai-research-writing → reviewer check
+literature-review → paper-reading → critical-ideation → experiment-design → scientific-figure-making → scholarly-writing + awesome-ai-research-writing → reviewer check
 ```
 
 ### Full Pipeline
 
 When a user wants to go from zero to a complete paper:
 
-1. Use `paper-reading` to deeply read key papers and generate notes.
-2. Use `literature-review` to survey the field and identify gaps.
+1. Use `literature-review` to survey the field and identify gaps.
+2. Use `paper-reading` to deeply read key papers and generate notes.
 3. Use `critical-ideation` to generate, challenge, and converge on a research direction.
-4. Use `scientific-figure-making` to visualize experimental evidence.
-5. Use `scholarly-writing` to build the paper structure and draft each section.
-6. Use `awesome-ai-research-writing` to polish the draft.
-7. Use reviewer-style critique to check whether claims match evidence.
+4. Use `experiment-design` to plan experiments, define variables, and design ablation studies.
+5. Use `scientific-figure-making` to visualize experimental evidence.
+6. Use `scholarly-writing` to build the paper structure and draft each section.
+7. Use `awesome-ai-research-writing` to polish the draft.
+8. Use reviewer-style critique to check whether claims match evidence.
 
 ### Partial Pipelines
 
-**Reading + Ideation** (no writing yet):
+**Review + Reading + Ideation** (no writing yet):
 
 ```text
-paper-reading -> literature-review -> critical-ideation
+literature-review -> paper-reading -> critical-ideation
 ```
 
-**Figure + Writing** (already have results):
+**Ideation + Experiment Design** (already have a direction):
+
+```text
+critical-ideation -> experiment-design
+```
+
+**Experiment + Figure + Writing** (already have results):
+
+```text
+experiment-design -> scientific-figure-making -> scholarly-writing -> awesome-ai-research-writing -> reviewer check
+```
+
+**Figure + Writing** (already have results and experiment plan):
 
 ```text
 scientific-figure-making -> scholarly-writing -> awesome-ai-research-writing -> reviewer check
 ```
 
-**Ideation + Writing** (already have a direction):
-
-```text
-critical-ideation -> scholarly-writing -> awesome-ai-research-writing
-```
-
 ---
 
-## 8. Routing Rules
-
-If the task is mainly about reading and understanding papers:
-
-```text
-skills/paper-reading/
-```
+## 9. Routing Rules
 
 If the task is mainly about surveying a research area:
 
@@ -220,10 +250,22 @@ If the task is mainly about surveying a research area:
 skills/literature-review/
 ```
 
+If the task is mainly about reading and understanding papers:
+
+```text
+skills/paper-reading/
+```
+
 If the task is mainly about brainstorming, idea validation, or novelty checks:
 
 ```text
 skills/critical-ideation/
+```
+
+If the task is mainly about designing experiments, planning ablations, or variable control:
+
+```text
+skills/experiment-design/
 ```
 
 If the task is mainly about plotting or visualization:
@@ -246,7 +288,7 @@ prompt-libraries/awesome-ai-research-writing/
 
 ---
 
-## 9. Important Safety Rule
+## 10. Important Safety Rule
 
 Do not modify toolkit source files unless the user explicitly asks to update the toolkit itself.
 
