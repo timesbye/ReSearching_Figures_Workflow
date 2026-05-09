@@ -1,8 +1,8 @@
 # GeoAgent-Thesis Example
 
-[![Toolkit](https://img.shields.io/badge/Toolkit-DION--AI--Research--Toolkit-blue?logo=github)](https://github.com/timesbye/DION-AI-Research-Toolkit)
+[![Toolkit](https://img.shields.io/badge/Toolkit-ReSearching\_Figures\_Workflow-blue?logo=github)](https://github.com/timesbye/ReSearching_Figures_Workflow)
 
-这是一个基于 [`templates/project_ai`](https://github.com/timesbye/DION-AI-Research-Toolkit/tree/main/templates/project_ai) 生成的示例科研项目，用来演示如何把 [DION-AI-Research-Toolkit](https://github.com/timesbye/DION-AI-Research-Toolkit) 挂接到具体论文或课题目录中。
+这是一个基于 [`templates/project_ai`](https://github.com/timesbye/ReSearching_Figures_Workflow/tree/main/templates/project_ai) 生成的示例科研项目，用来演示如何把 [ReSearching_Figures_Workflow](https://github.com/timesbye/ReSearching_Figures_Workflow) 挂接到具体论文或课题目录中。
 
 ## 目录说明
 
@@ -79,7 +79,7 @@
 
 如果你想直接展示“这个仓库如何把 ideation、绘图、写作和 reviewer 检查串成一个完整 workflow”，优先阅读：
 
-- [`WORKFLOW_SHOWCASE.md`](https://github.com/timesbye/DION-AI-Research-Toolkit/blob/main/examples/GeoAgent-Thesis/WORKFLOW_SHOWCASE.md)
+- [`WORKFLOW_SHOWCASE.md`](https://github.com/timesbye/ReSearching_Figures_Workflow/blob/main/examples/GeoAgent-Thesis/WORKFLOW_SHOWCASE.md)
 
 这份文档会按故事顺序展示：
 

@@ -1,8 +1,8 @@
 # 使用教程
 
-[![GitHub](https://img.shields.io/badge/Github-timesbye%2FDION--AI--Research--Toolkit-blue?logo=github)](https://github.com/timesbye/DION-AI-Research-Toolkit)
+[![GitHub](https://img.shields.io/badge/Github-timesbye%2FReSearching\_Figures\_Workflow-blue?logo=github)](https://github.com/timesbye/ReSearching_Figures_Workflow)
 
-本文档给出从 [DION-AI-Research-Toolkit](https://github.com/timesbye/DION-AI-Research-Toolkit) 到实际科研项目的完整使用方式，并提供仓库内置示例项目的演示流程。
+本文档给出从 [ReSearching_Figures_Workflow](https://github.com/timesbye/ReSearching_Figures_Workflow) 到实际科研项目的完整使用方式，并提供仓库内置示例项目的演示流程。
 
 ## 1. 仓库用途
 
@@ -76,13 +76,13 @@ mkdir -p ~/Projects/My-Research-Project
 2. 复制模板：
 
 ```bash
-cp -r /path/to/DION-AI-Research-Toolkit/templates/project_ai/* ~/Projects/My-Research-Project/
+cp -r /path/to/ReSearching_Figures_Workflow/templates/project_ai/* ~/Projects/My-Research-Project/
 ```
 
 3. 连接 toolkit：
 
 ```bash
-/path/to/DION-AI-Research-Toolkit/scripts/link_to_project.sh ~/Projects/My-Research-Project
+/path/to/ReSearching_Figures_Workflow/scripts/link_to_project.sh ~/Projects/My-Research-Project
 ```
 
 4. 在 Agent 中先读取：
@@ -121,7 +121,7 @@ F:\AI-Research-Toolkit\scripts\link_to_project.ps1 -ProjectPath "F:\AI-Research-
 Linux / macOS / WSL：
 
 ```bash
-/path/to/DION-AI-Research-Toolkit/scripts/link_to_project.sh /path/to/DION-AI-Research-Toolkit/examples/GeoAgent-Thesis
+/path/to/ReSearching_Figures_Workflow/scripts/link_to_project.sh /path/to/ReSearching_Figures_Workflow/examples/GeoAgent-Thesis
 ```
 
 建立完成后，示例项目里会出现：

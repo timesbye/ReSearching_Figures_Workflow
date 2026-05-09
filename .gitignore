@@ -18,3 +18,11 @@ temp/
 
 # Local notes
 .local/
+
+# Local build records
+Build/
+
+# gh CLI temp files
+gh.exe
+gh.zip
+gh_tmp/

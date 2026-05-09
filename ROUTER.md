@@ -1,6 +1,6 @@
-# DION AI Research Toolkit Router
+# ReSearching Figures Workflow Router
 
-[![GitHub](https://img.shields.io/badge/Github-timesbye%2FDION--AI--Research--Toolkit-blue?logo=github)](https://github.com/timesbye/DION-AI-Research-Toolkit)
+[![GitHub](https://img.shields.io/badge/Github-timesbye%2FReSearching\_Figures\_Workflow-blue?logo=github)](https://github.com/timesbye/ReSearching_Figures_Workflow)
 
 ## 1. Academic Writing Prompt Library
 
