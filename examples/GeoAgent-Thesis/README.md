@@ -4,6 +4,8 @@
 
 这是一个基于 [`templates/project_ai`](https://github.com/timesbye/ReSearching_Figures_Workflow/tree/main/templates/project_ai) 生成的示例科研项目，用来演示如何把 [ReSearching_Figures_Workflow](https://github.com/timesbye/ReSearching_Figures_Workflow) 挂接到具体论文或课题目录中。
 
+> **项目定位**：ReSearching_Figures_Workflow 通过引用已有前沿科研绘图和学术写作工具，并在此基础上构建原创 brainstorm 能力，整合为从 ideation 到论文表达的一体式 workflow。本示例展示了这一完整工作流。
+
 ## 目录说明
 
 - `.ai/PROJECT_RULES.md`

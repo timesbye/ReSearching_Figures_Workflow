@@ -4,15 +4,17 @@
 
 本文档给出从 [ReSearching_Figures_Workflow](https://github.com/timesbye/ReSearching_Figures_Workflow) 到实际科研项目的完整使用方式，并提供仓库内置示例项目的演示流程。
 
+> **项目定位**：ReSearching_Figures_Workflow 通过引用已有前沿科研绘图和学术写作工具，并在此基础上构建原创 brainstorm 能力，整合为从 ideation 到论文表达的一体式 workflow。
+
 ## 1. 仓库用途
 
-本仓库统一提供三类能力：
+本仓库通过引用前沿工具并构建原创能力，统一提供三类能力：
 
-- 学术写作与翻译 Prompt 库：
+- 学术写作与翻译 Prompt 库（引用 [awesome-ai-research-writing](https://github.com/Leey21/awesome-ai-research-writing)）：
   `prompt-libraries/awesome-ai-research-writing/`
-- 论文级科研绘图 Skill：
+- 论文级科研绘图 Skill（参考 [figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式）：
   `skills/scientific-figure-making/`
-- 高质量 brainstorm / 选题 / 差异化 / novelty 检查 Skill：
+- 高质量 brainstorm / 选题 / 差异化 / novelty 检查 Skill（**本项目原创**）：
   `skills/critical-ideation/`
 
 推荐使用方式不是把这些内容复制到每个项目里，而是让具体项目通过 `.ai/toolkit/` 链接到本仓库。

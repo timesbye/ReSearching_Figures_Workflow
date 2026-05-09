@@ -2,15 +2,16 @@
 
 [![Toolkit](https://img.shields.io/badge/Toolkit-ReSearching\_Figures\_Workflow-blue?logo=github)](https://github.com/timesbye/ReSearching_Figures_Workflow)
 
-这份示例不是在展示"某一个单点能力有多强"，而是在展示 [ReSearching_Figures_Workflow](https://github.com/timesbye/ReSearching_Figures_Workflow) 如何把外部引用能力和我们自己的项目规则整合成一个可复用 workflow。
+这份示例不是在展示"某一个单点能力有多强"，而是在展示 [ReSearching_Figures_Workflow](https://github.com/timesbye/ReSearching_Figures_Workflow) 如何通过引用已有前沿科研工具并在此基础上构建原创 brainstorm 能力，整合成一个可复用的一体式 workflow。
 
 这里的关键不是声称我们发明了所有模块，而是：
 
-- 引入 [`awesome-ai-research-writing`](https://github.com/Leey21/awesome-ai-research-writing) 作为学术写作 Prompt 库
-- 引入 [`figures4papers`](https://github.com/ChenLiu-1996/figures4papers) 中的 `scientific-figure-making` 作为科研绘图 Skill
-- 在此基础上补上我们自己的 [`critical-ideation`](https://github.com/timesbye/ReSearching_Figures_Workflow/tree/main/skills/critical-ideation)、路由规则、项目模板、产物目录和顺序调用方式
+- **引用** [`awesome-ai-research-writing`](https://github.com/Leey21/awesome-ai-research-writing)（by [Leey21](https://github.com/Leey21)）作为学术写作 Prompt 库
+- **参考** [`figures4papers`](https://github.com/ChenLiu-1996/figures4papers)（by [Chen Liu](https://chenliu-1996.github.io/)，Yale University）中的绘图范式，编写科研绘图使用指南
+- **原创构建** [`critical-ideation`](https://github.com/timesbye/ReSearching_Figures_Workflow/tree/main/skills/critical-ideation)——一个 Critic + Search + Ideation 型选题 Skill，能主动质疑、检索已有方案、重构 idea、收敛到可执行 MVP
+- **整合** 路由规则、项目模板、产物目录和顺序调用方式，形成从 ideation 到论文表达的连续工作流
 
-换句话说，这个仓库的价值在于 **把分散能力组织成一个能从想法走到图表、再走到论文表达的连续工作流**。
+换句话说，这个仓库的价值在于 **把分散能力组织成一个能从想法走到图表、再走到论文表达的连续工作流**，其中原创的 brainstorm 能力是连接"选题"与"执行"的关键桥梁。
 
 ***
 

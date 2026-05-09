@@ -2,7 +2,11 @@
 
 [![GitHub](https://img.shields.io/badge/Github-timesbye%2FReSearching\_Figures\_Workflow-blue?logo=github)](https://github.com/timesbye/ReSearching_Figures_Workflow)
 
+> **项目定位**：通过引用已有前沿科研绘图和学术写作工具，并在此基础上构建原创 brainstorm 能力，整合为从 ideation 到论文表达的一体式 workflow。
+
 ## 1. Academic Writing Prompt Library
+
+> 来源：引用 [Leey21/awesome-ai-research-writing](https://github.com/Leey21/awesome-ai-research-writing)
 
 Path:
 
@@ -35,6 +39,8 @@ Rules:
 ---
 
 ## 2. Scientific Figure Making Skill
+
+> 来源：参考 [ChenLiu-1996/figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式，本项目编写使用指南
 
 Path:
 
@@ -77,6 +83,8 @@ Rules:
 ---
 
 ## 3. Critical Ideation Skill
+
+> 来源：**本项目原创**
 
 Path:
 
