@@ -27,18 +27,48 @@
 
 - 一份当前实验结果表：[data/results.csv](data/results.csv)
 - 一段论文上下文：[paper/context.md](paper/context.md)
-- 三个可调用模块：
+- 一篇已阅读的参考论文笔记：[literature/geoagent2025_framework.md](literature/geoagent2025_framework.md)
+- 全部八个可调用模块：
+  - `literature-review`
+  - `paper-reading`
   - `critical-ideation`
+  - `experiment-design`
   - `scientific-figure-making`
+  - `scholarly-writing`
   - `awesome-ai-research-writing`
+  - `reviewer check`
 
 问题不是"能不能生成一张图"，而是：
 
-1. 这个项目下一步到底该往哪个方向推进？
-2. 现有数据能支撑怎样的图表与结论？
-3. 最终怎么把这些内容写成论文表达，而不是散乱笔记？
+1. 如何系统性调研领域现状并识别研究 gap？
+2. 如何深度阅读关键论文并提取结构化信息？
+3. 这个项目下一步到底该往哪个方向推进？
+4. 现有数据能支撑怎样的图表与结论？
+5. 最终怎么把这些内容写成论文表达，而不是散乱笔记？
 
 这正是 workflow 应该解决的问题。
+
+***
+
+## 第零幕：文献综述与论文阅读（前置步骤）
+
+在进入选题之前，完整 workflow 的前两步是文献综述和论文阅读。本示例项目已包含这两步的产物：
+
+### Literature Review
+
+使用 `literature-review` Skill 对 GeoAgent 所在领域进行系统性综述，识别研究 gap。
+
+产物位置：`literature/` 目录
+
+### Paper Reading
+
+使用 `paper-reading` Skill 深度阅读关键论文，生成结构化笔记。
+
+产物位置：[literature/geoagent2025\_framework.md](literature/geoagent2025_framework.md)
+
+### 这一步为什么重要
+
+没有文献综述和论文阅读，后续的 ideation 就缺乏证据基础。这两步确保选题不是凭空想象，而是基于对领域现状的理解。
 
 ***
 

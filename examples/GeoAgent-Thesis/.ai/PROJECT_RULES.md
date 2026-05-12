@@ -2,7 +2,7 @@
 
 ## Project Identity
 
-This is a project using DION-AI-Research-Toolkit.
+This is a project using ALL-in-ALL_ReSearching_Workflow_Skill.
 
 Before starting any task, read:
 
@@ -18,37 +18,25 @@ The toolkit should be linked as:
 .ai/toolkit/
 ```
 
-## Writing Rules
+## Literature Review Rules
 
-For academic writing, polishing, translation, experiment analysis, and reviewer-style critique, use:
-
-```text
-.ai/toolkit/prompt-libraries/awesome-ai-research-writing/
-```
-
-General writing requirements:
-
-- Preserve technical meaning.
-- Do not invent results, citations, or experimental claims.
-- Use formal academic style.
-- Avoid exaggerated contribution statements.
-- Keep terminology consistent with this project.
-
-## Figure Rules
-
-For scientific figures, use:
+For systematic literature review on a research topic, use:
 
 ```text
-.ai/toolkit/skills/scientific-figure-making/
+.ai/toolkit/skills/literature-review/
 ```
 
-Figure output rules:
+Save reviews to `literature/`, e.g. `literature/review_[topic].md`.
 
-- Save scripts to `figures/scripts/`.
-- Save PDF and PNG to `figures/outputs/`.
-- Generate reproducible Python matplotlib scripts.
-- Use readable labels, legends, and captions.
-- Avoid decorative or marketing-style charts.
+## Paper Reading Rules
+
+For deep-reading a single paper and generating structured notes, use:
+
+```text
+.ai/toolkit/skills/paper-reading/
+```
+
+Save notes to `literature/`, e.g. `literature/[author_year_title].md`.
 
 ## Critical Ideation Rules
 
@@ -74,26 +62,78 @@ Generated ideation outputs should be saved to `ideas/`, preferably:
 - `ideas/decision_matrix.md`
 - `ideas/mvp_plan.md`
 
-## Mixed Task Workflow
+## Experiment Design Rules
 
-For figure + paper writing tasks:
+For designing experiments, planning ablation studies, variable control, or benchmark selection, use:
 
-1. Read project data from `data/`.
-2. Generate plotting script.
-3. Save figure outputs.
-4. Draft figure caption.
-5. Polish caption using academic writing prompts.
-6. Write result analysis paragraph.
-7. Check whether the figure supports the stated claim.
+```text
+.ai/toolkit/skills/experiment-design/
+```
 
-For ideation tasks:
+When using this skill:
 
-1. Frame the problem clearly.
-2. Generate multiple candidate ideas.
-3. Critique them aggressively.
-4. Search for close existing work when current context matters.
-5. Refine and rank the ideas.
-6. Save the results into `ideas/`.
+1. Define clear independent/dependent variables before running.
+2. Specify baselines and metrics before seeing results.
+3. Plan ablation studies alongside main experiments.
+4. Document all hyperparameters and random seeds.
+5. Include a reproducibility checklist.
+
+Generated experiment outputs should be saved to `experiments/`, preferably:
+
+- `experiments/experiment_plan.md`
+- `experiments/ablation_plan.md`
+- `experiments/reproducibility_checklist.md`
+
+## Figure Rules
+
+For scientific figures, use:
+
+```text
+.ai/toolkit/skills/scientific-figure-making/
+```
+
+Figure output rules:
+
+- Save scripts to `figures/scripts/`.
+- Save PDF and PNG to `figures/outputs/`.
+- Generate reproducible Python matplotlib scripts.
+- Use readable labels, legends, and captions.
+- Avoid decorative or marketing-style charts.
+
+## Writing Rules
+
+For building a paper from scratch, section by section, use:
+
+```text
+.ai/toolkit/skills/scholarly-writing/
+```
+
+For polishing, translating, or refining existing text, use:
+
+```text
+.ai/toolkit/prompt-libraries/awesome-ai-research-writing/
+```
+
+General writing requirements:
+
+- Preserve technical meaning.
+- Do not invent results, citations, or experimental claims.
+- Use formal academic style.
+- Avoid exaggerated contribution statements.
+- Keep terminology consistent with this project.
+
+## Full Workflow
+
+For going from zero to a complete paper:
+
+1. Use `literature-review` to survey the field → save review to `literature/`
+2. Use `paper-reading` to read key papers → save notes to `literature/`
+3. Use `critical-ideation` to converge on a direction → save to `ideas/`
+4. Use `experiment-design` to plan experiments → save to `experiments/`
+5. Use `scientific-figure-making` to visualize evidence → save to `figures/`
+6. Use `scholarly-writing` to draft the paper → save to `paper/`
+7. Use `awesome-ai-research-writing` to polish → update `paper/`
+8. Use reviewer-style critique to check claims → save to `paper/notes/`
 
 ## Important Rule
 

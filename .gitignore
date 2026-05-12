@@ -8,9 +8,8 @@ __pycache__/
 .venv/
 venv/
 
-# Generated figures
-/outputs/
-/figures/outputs/
+# Generated figures (ignore only at template root, not in examples)
+/templates/project_ai/figures/outputs/
 
 # Temporary files
 tmp/
