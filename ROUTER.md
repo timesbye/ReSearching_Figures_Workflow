@@ -6,7 +6,7 @@
 
 ## 1. Literature Review Skill
 
-> 来源：参考 [CAICAIIs/Auto-Scholar](https://github.com/CAICAIIs/Auto-Scholar)（MIT License）文献综述自动化理念，本项目编写使用指南
+> 来源：参考 [CAICAIIs/Auto-Scholar](https://github.com/CAICAIIs/Auto-Scholar)（MIT License）文献综述自动化理念；v4 引用验证参考 [PaperOrchestra](https://arxiv.org/abs/2604.05018)，期刊质量排序参考 [Paperguide.ai](https://paperguide.ai/)，Workbooks 提取参考 Paperguide.ai
 
 Path:
 
@@ -21,6 +21,9 @@ Use for:
 - writing a related work section
 - identifying research gaps
 - finding and organizing relevant papers
+- citation verification (v4)
+- journal quality ranking with SJR/SNIP (v4)
+- multi-paper structured data extraction / Workbooks mode (v4)
 
 ---
 
@@ -46,7 +49,7 @@ Use for:
 
 ## 3. Critical Ideation Skill
 
-> 来源：**本项目原创**
+> 来源：**本项目原创**；v4 辩论机制参考 [Google AI Co-Scientist](https://arxiv.org/abs/2502.18864) 的 Generate-Debate-Evolve 循环
 
 Path:
 
@@ -67,14 +70,15 @@ Use for:
 - Agent workflow design
 - self-media topic ideation
 - paper novelty check
+- structured debate from opposing perspectives (v4)
 
 Workflow:
 
 1. Frame the ideation problem.
 2. Generate candidate ideas.
-3. Critique each idea aggressively.
+3. Critique each idea aggressively (with Generate-Debate-Evolve cycle for promising ideas) (v4).
 4. Search for existing work when novelty, feasibility, or market context depends on current information.
-5. Refine ideas based on critique and evidence.
+5. Refine ideas based on critique, debate, and evidence.
 6. Rank ideas by novelty, feasibility, user value, differentiation, demonstrability, and fit.
 7. Recommend only the ideas worth building.
 
@@ -111,7 +115,7 @@ Rules:
 
 ## 5. Scientific Figure Making Skill
 
-> 来源：参考 [ChenLiu-1996/figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式，本项目编写使用指南
+> 来源：参考 [ChenLiu-1996/figures4papers](https://github.com/ChenLiu-1996/figures4papers) 绘图范式；v4 VLM 审查参考 [PaperOrchestra](https://arxiv.org/abs/2604.05018) 和 [AI Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2)，概念示意图参考 PaperOrchestra
 
 Path:
 
@@ -127,6 +131,8 @@ Use for:
 - ablation figures, comparison figures, heatmaps
 - multi-panel figures
 - exporting PDF and PNG
+- VLM figure quality verification (v4)
+- concept diagram generation (v4)
 
 Rules:
 
@@ -136,12 +142,13 @@ Rules:
 - Export both PDF and PNG.
 - Use readable axis labels, legends, and captions.
 - Prefer clean academic style.
+- Run VLM review loop for publication figures (v4, when VLM available).
 
 ---
 
 ## 6. Scholarly Writing Skill
 
-> 来源：参考 [ShiyangZheng/scholarly](https://github.com/ShiyangZheng/scholarly) 引导式论文写作理念，本项目编写使用指南
+> 来源：参考 [ShiyangZheng/scholarly](https://github.com/ShiyangZheng/scholarly) 引导式论文写作理念；v4 结构化 JSON 大纲参考 [PaperOrchestra](https://arxiv.org/abs/2604.05018)，引用接地参考 [LiRA](https://arxiv.org/abs/2510.05138)，并行写作参考 [AutoSurvey2](https://arxiv.org/abs/2510.26012)
 
 Path:
 
@@ -155,6 +162,9 @@ Use for:
 - building paper structure and skeleton
 - guided abstract, introduction, method, results, discussion writing
 - thesis writing guidance
+- structured JSON outline with visualization plan and literature strategy (v4)
+- citation grounding verification (v4)
+- parallel section writing mode (v4)
 
 Relationship to `awesome-ai-research-writing`:
 
@@ -193,26 +203,97 @@ Rules:
 
 ---
 
-## 8. Full Workflow
+## 8. Deep Research Skill (v4 new)
 
-The complete workflow chain from literature review to reviewer check:
+> 来源：参考 [Paperguide.ai](https://paperguide.ai/) 的 Deep Research 功能（自动发现 → 筛选 → 提取 → 趋势分析 → 综合报告）
+
+Path:
 
 ```text
-literature-review → paper-reading → critical-ideation → experiment-design → scientific-figure-making → scholarly-writing + awesome-ai-research-writing → reviewer check
+skills/deep-research/
 ```
+
+Use for:
+
+- comprehensive deep research reports with trend analysis
+- research landscape analysis
+- automated paper discovery and synthesis
+- trend analysis across time, methods, and performance
+- gap analysis and future direction prediction
+- 深度研究
+- 研究趋势分析
+- 领域全景报告
+
+Relationship to `literature-review`:
+
+- `literature-review`: Systematic review of existing work, focused on organizing and citing papers
+- `deep-research`: Comprehensive research report with trend analysis, data extraction, and forward-looking insights
+
+---
+
+## 9. Reviewer Check
+
+> 来源：使用 awesome-ai-research-writing 中的 reviewer_check prompt；v4 评审+回滚参考 [PaperOrchestra](https://arxiv.org/abs/2604.05018) 的 AgentReview，多角度评审参考 [AI Scientist-v2](https://github.com/SakanaAI/AI-Scientist-v2) 的 5 份独立评审 + AC Meta-review，完整性闸门和反谄媚协议参考 [ARS](https://github.com/Imbad0202/academic-research-skills)
+
+Path:
+
+```text
+prompts/reviewer_check.md
+prompts/review_scorecard.md (v4 new)
+```
+
+Use for:
+
+- reviewer-perspective quality check
+- multi-perspective review (5 independent reviewers + AC Meta-review) (v4)
+- review-rollback mechanism (only accept modifications that improve total score) (v4)
+- structured scoring with review scorecard (v4)
+- integrity gate — 7-item AI failure mode checklist (v4)
+- anti-flattery protocol (v4)
+
+---
+
+## 10. Full Workflow
+
+The complete workflow chain from literature review to reviewer check (v4 enhanced):
+
+```text
+literature-review → paper-reading → critical-ideation → experiment-design → scientific-figure-making → scholarly-writing + awesome-ai-research-writing → reviewer_check
+```
+
+Each skill's internal workflow has been enhanced in v4:
+
+- `literature-review`: + citation verification + journal quality ranking + Workbooks mode
+- `critical-ideation`: + Generate-Debate-Evolve cycle
+- `scientific-figure-making`: + VLM review loop + concept diagram generation
+- `scholarly-writing`: + structured JSON outline + citation grounding + parallel writing
+- `reviewer_check`: + multi-perspective review + review-rollback mechanism
 
 ### Full Pipeline
 
 When a user wants to go from zero to a complete paper:
 
-1. Use `literature-review` to survey the field and identify gaps.
+1. Use `literature-review` to survey the field and identify gaps (with citation verification and quality ranking).
 2. Use `paper-reading` to deeply read key papers and generate notes.
-3. Use `critical-ideation` to generate, challenge, and converge on a research direction.
+3. Use `critical-ideation` to generate, challenge, debate, and converge on a research direction.
 4. Use `experiment-design` to plan experiments, define variables, and design ablation studies.
-5. Use `scientific-figure-making` to visualize experimental evidence.
-6. Use `scholarly-writing` to build the paper structure and draft each section.
+5. Use `scientific-figure-making` to visualize experimental evidence (with VLM quality review).
+6. Use `scholarly-writing` to build the paper structure (with JSON outline and citation grounding) and draft each section.
 7. Use `awesome-ai-research-writing` to polish the draft.
-8. Use reviewer-style critique to check whether claims match evidence.
+8. Use `reviewer_check` to run multi-perspective review with rollback mechanism.
+
+### Deep Research Pipeline (v4 new)
+
+When a user wants a comprehensive research landscape report:
+
+```text
+deep-research → (optional) critical-ideation → scholarly-writing + awesome-ai-research-writing → reviewer_check
+```
+
+1. Use `deep-research` to discover, filter, extract, analyze trends, and synthesize a comprehensive report.
+2. Optionally use `critical-ideation` to identify promising directions from the report.
+3. Use `scholarly-writing` + `awesome-ai-research-writing` to write up the findings.
+4. Use `reviewer_check` to verify quality.
 
 ### Partial Pipelines
 
@@ -240,14 +321,26 @@ experiment-design -> scientific-figure-making -> scholarly-writing -> awesome-ai
 scientific-figure-making -> scholarly-writing -> awesome-ai-research-writing -> reviewer check
 ```
 
+**Deep Research only** (comprehensive landscape report):
+
+```text
+deep-research
+```
+
 ---
 
-## 9. Routing Rules
+## 11. Routing Rules
 
-If the task is mainly about surveying a research area:
+If the task is mainly about surveying a research area (standard review):
 
 ```text
 skills/literature-review/
+```
+
+If the task is about comprehensive deep research with trend analysis:
+
+```text
+skills/deep-research/
 ```
 
 If the task is mainly about reading and understanding papers:
@@ -286,9 +379,15 @@ If the task is mainly about polishing, translating, or refining existing text:
 prompt-libraries/awesome-ai-research-writing/
 ```
 
+If the task is mainly about reviewer-style quality checking:
+
+```text
+prompts/reviewer_check.md
+```
+
 ---
 
-## 10. Important Safety Rule
+## 12. Important Safety Rule
 
 Do not modify toolkit source files unless the user explicitly asks to update the toolkit itself.
 

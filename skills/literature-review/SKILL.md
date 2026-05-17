@@ -1,11 +1,11 @@
 ---
 name: literature-review
-description: Use for generating systematic literature reviews on a research topic. This skill searches academic databases, identifies relevant papers, extracts key findings, and synthesizes them into a structured review with proper citations. It supports human-in-the-loop paper selection and produces well-cited academic reviews.
+description: Use for generating systematic literature reviews on a research topic. This skill searches academic databases, identifies relevant papers, extracts key findings, and synthesizes them into a structured review with proper citations. It supports human-in-the-loop paper selection, API-level citation verification, journal quality ranking, and multi-paper structured data extraction. Produces well-cited academic reviews with verified references.
 ---
 
 # Literature Review
 
-> **设计灵感与参考来源**：本 Skill 的概念参考自 [CAICAIIs/Auto-Scholar](https://github.com/CAICAIIs/Auto-Scholar)（MIT License，AI 驱动的文献综述生成器）。本目录中的文档为 ALL-in-ALL_ReSearching_Workflow_Skill 项目基于其理念编写的使用指南，不包含 Auto-Scholar 的原始代码。
+> **设计灵感与参考来源**：本 Skill 的概念参考自 [CAICAIIs/Auto-Scholar](https://github.com/CAICAIIs/Auto-Scholar)（MIT License，AI 驱动的文献综述生成器）。v4 引用验证流程参考自 [PaperOrchestra](https://arxiv.org/abs/2604.05018)（Google Cloud AI Research）的 API 级双重验证机制；期刊质量排序参考自 [Paperguide.ai](https://paperguide.ai/) 的 SJR/SNIP 指标；Workbooks 结构化数据提取参考自 Paperguide.ai 的多论文对比提取功能。本目录中的文档为 ALL-in-ALL_ReSearching_Workflow_Skill 项目基于其理念编写的使用指南，不包含上述项目的原始代码。
 
 Open `templates/` only as needed. Start from the workflow below.
 
@@ -17,9 +17,11 @@ This skill:
 
 - generates search keywords from the research topic
 - searches academic databases (Semantic Scholar, arXiv, PubMed)
-- filters and ranks candidate papers
+- **verifies citation existence via API** (Semantic Scholar API, optional)
+- filters and ranks candidate papers with **journal quality signals** (SJR/SNIP)
 - presents candidates for user approval (human-in-the-loop)
 - synthesizes approved papers into a structured, cited review
+- supports **multi-paper structured data extraction** (Workbooks mode)
 
 ## When to use
 
@@ -31,11 +33,14 @@ Use this skill when the user asks to:
 - write a related work section
 - understand the state of the art
 - identify research gaps
+- extract and compare data across multiple papers
+- verify citation reliability
 - 文献综述
 - 调研现有工作
 - 写 related work
 - 了解研究现状
 - 找相关论文
+- 多论文数据提取对比
 
 ## When not to use
 
@@ -45,6 +50,7 @@ Do not use this skill for:
 - brainstorming new ideas (use `critical-ideation`)
 - writing or polishing text (use `scholarly-writing` or `awesome-ai-research-writing`)
 - generating figures (use `scientific-figure-making`)
+- deep research reports with trend analysis (use `deep-research`)
 
 ## Core workflow
 
@@ -103,6 +109,47 @@ For each source, record:
 - number of results
 - top candidate papers with titles, authors, year, venue, abstract
 
+### Stage 3.5: Citation verification (v4 new)
+
+> **来源**：PaperOrchestra 的 API 级引用验证机制
+
+Verify that collected references actually exist and are correctly attributed. This stage eliminates citation hallucinations.
+
+**Verification pipeline:**
+
+1. **Semantic Scholar API lookup** (when API is available):
+   - For each candidate paper, query by title + first author
+   - Verify: title match, author match, year match, venue match
+   - Record the Semantic Scholar paper ID for each verified reference
+
+2. **Deduplication**:
+   - Cross-reference verified papers to remove duplicates
+   - Merge entries that refer to the same paper with different citation formats
+
+3. **Date filtering**:
+   - Confirm publication dates against the review scope
+   - Flag preprints vs. peer-reviewed publications
+
+4. **Generate verified .bib**:
+   - Produce a BibTeX file with only verified references
+   - Mark unverified references with `[UNVERIFIED]` prefix
+
+**Degradation mode**: If Semantic Scholar API is unavailable or rate-limited, fall back to LLM self-verification:
+- Ask the LLM to cross-check each reference against known databases
+- Flag all references as `[LLM-VERIFIED]` (lower confidence) instead of `[API-VERIFIED]`
+- Explicitly note the verification method in the review output
+
+```text
+Citation Verification Report
+- Total candidates: [N]
+- API-verified: [N]
+- LLM-verified (fallback): [N]
+- Unverifiable: [N]
+- Duplicates removed: [N]
+- Date-filtered out: [N]
+- Generated .bib: [path]
+```
+
 ### Stage 4: Filter and rank candidates
 
 Apply inclusion/exclusion criteria:
@@ -114,6 +161,34 @@ Apply inclusion/exclusion criteria:
 5. Methodological rigor
 
 Present the filtered list to the user for approval before proceeding.
+
+### Stage 4.5: Journal quality ranking (v4 new)
+
+> **来源**：Paperguide.ai 的 SJR/SNIP 期刊质量指标
+
+Enhance the ranking with journal-level quality signals:
+
+1. **SJR (SCImago Journal Rank)**: Measures journal prestige based on citation weight
+2. **SNIP (Source Normalized Impact per Paper)**: Measures contextual citation impact
+3. **Venue tier classification**:
+   - Tier 1: Top-tier venues (e.g., NeurIPS, ICML, ACL, Nature, Science)
+   - Tier 2: Well-regarded venues
+   - Tier 3: Regional or emerging venues
+   - Preprint: Not yet peer-reviewed
+
+4. **Quality-adjusted ranking**:
+   - Combine relevance score with journal quality signal
+   - Papers from higher-tier venues get a quality boost
+   - Preprints are not penalized but are flagged separately
+
+```text
+Quality-Enhanced Ranking
+| # | Title | Relevance | Venue | SJR/SNIP | Tier | Adjusted Score |
+|---|-------|-----------|-------|----------|------|----------------|
+| 1 |       |           |       |          |      |                |
+```
+
+**Note**: SJR/SNIP data may not be available for all venues. When unavailable, use venue tier classification as a proxy.
 
 ### Stage 5: Deep-read approved papers
 
@@ -159,6 +234,7 @@ Produce the final review with:
 
 - In-text citations in a consistent format
 - Reference list at the end
+- **Citation verification status** (API-verified / LLM-verified / Unverifiable)
 - Clear attribution for every claim
 - Explicit gap identification
 - Connection to the user's own research direction
@@ -166,31 +242,58 @@ Produce the final review with:
 Save the output to the target project's `literature/` directory:
 
 - Filename: `literature/review_[topic-slug].md`
+- BibTeX: `literature/review_[topic-slug].bib`
+
+## Workbooks mode (v4 new)
+
+> **来源**：Paperguide.ai 的 Workbooks 结构化数据提取
+
+When the user needs to extract and compare structured data across multiple papers (instead of a narrative review), use Workbooks mode.
+
+### When to use Workbooks mode
+
+- "Compare the datasets used across these papers"
+- "Extract the key metrics from each paper into a table"
+- "Create a comparison matrix of methods and results"
+- "多论文数据提取对比"
+
+### Workbooks workflow
+
+1. Define extraction dimensions (what to extract from each paper)
+2. Deep-read each approved paper
+3. Extract structured data per dimension
+4. Generate a comparison matrix
+5. Highlight patterns, outliers, and gaps
+
+Use `templates/workbooks_extraction.md` for the extraction template.
 
 ## Default output structure
 
 ```text
 1. Review Scope & Methodology
 2. Search Strategy & Results
-3. Thematic Synthesis
+3. Citation Verification Report (v4)
+4. Thematic Synthesis
    - Theme A
    - Theme B
    - Theme C
-4. Cross-cutting Analysis
-5. Identified Gaps
-6. Connection to Current Work
-7. References
+5. Cross-cutting Analysis
+6. Identified Gaps
+7. Connection to Current Work
+8. References (with verification status)
 ```
 
 ## Style rules
 
 - Organize by theme, not by paper
 - Every claim must have a citation
+- **Every citation must be verified** (API-verified preferred, LLM-verified acceptable, unverifiable flagged)
 - Separate established findings from preliminary results
 - Flag papers with conflicting findings
 - Do not inflate the number of papers cited — prefer depth over breadth
 - Identify specific gaps rather than vague "more research is needed"
 - Connect findings to the user's research context
+- When SJR/SNIP data is available, incorporate it into quality assessment transparently
 
 ## Templates
 
@@ -200,3 +303,5 @@ Use these bundled files as needed:
   Use when defining the review scope and search strategy.
 - `templates/paper_summary_table.md`
   Use when presenting candidate papers for user approval.
+- `templates/workbooks_extraction.md` (v4 new)
+  Use when extracting and comparing structured data across multiple papers.
